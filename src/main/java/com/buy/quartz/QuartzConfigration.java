@@ -1,4 +1,4 @@
-package com.buy.controller;
+package com.buy.quartz;
 
 import org.quartz.Trigger;
 import org.springframework.context.annotation.Bean;
@@ -9,7 +9,6 @@ import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
 @Configuration
 public class QuartzConfigration {
-
     @Bean(name = "jobDetail")
     public MethodInvokingJobDetailFactoryBean detailFactoryBean(SchedulerTask task) {
         // ScheduleTask为需要执行的任务
@@ -37,7 +36,7 @@ public class QuartzConfigration {
     public CronTriggerFactoryBean cronJobTrigger(MethodInvokingJobDetailFactoryBean jobDetail) {
         CronTriggerFactoryBean tigger = new CronTriggerFactoryBean();
         tigger.setJobDetail(jobDetail.getObject());
-        tigger.setCronExpression("0/5 * * * * ?");// 表示每隔2秒钟执行一次
+        tigger.setCronExpression("0/2 * * * * ?");// 表示每隔2秒钟执行一次
         //tigger.set
         tigger.setName("myTigger");// trigger的name
         return tigger;

@@ -1,11 +1,15 @@
 package com.buy.utils;
 
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.util.CollectionUtils;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
 public class RedisUtil {
 
@@ -122,7 +126,6 @@ public class RedisUtil {
     /**
      * 递增
      * @param key 键
-     * @param delta 要增加几(大于0)
      * @return
      */
     public long incr(String key, long delta){
@@ -135,7 +138,6 @@ public class RedisUtil {
     /**
      * 递减
      * @param key 键
-     * @param delta 要减少几(小于0)
      * @return
      */
     public long decr(String key, long delta){
