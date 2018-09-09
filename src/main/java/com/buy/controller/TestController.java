@@ -33,8 +33,8 @@ public class TestController {
     public String testRedis(){
         try{
             logger.info("日志开始###################################################################");
-            redisService.setStr("name","张三");
-            redisService.setStr("age","25");
+            redisService.addStr("name","张三");
+            redisService.addStr("age","25");
             logger.info("日志结束####################################################################");
         }catch (Exception e){
             e.printStackTrace();
@@ -51,8 +51,8 @@ public class TestController {
         String age = null;
         try{
             logger.info("日志开始###################################################################");
-            name = String.valueOf(redisService.getStr("name"));
-            age = String.valueOf(redisService.getStr("age"));
+            name = String.valueOf(redisService.get("name"));
+            age = String.valueOf(redisService.get("age"));
         }catch (Exception e){
             e.printStackTrace();
             logger.info("日志异常####################################################################");

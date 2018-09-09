@@ -1,82 +1,35 @@
 package com.buy.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
+import org.thymeleaf.util.StringUtils;
 
-import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
 
-/**
- * Created by on 2017/3/1.
- */
-@Service
+@Repository
 public class RedisService {
 
     @Autowired
     StringRedisTemplate stringRedisTemplate;
 
-
-    @Resource(name = "stringRedisTemplate")
-    ValueOperations<String, String> valOpsStr;
-
-    @Autowired
-    RedisTemplate<Object, Object> redisTemplate;
-
-    @Resource(name = "redisTemplate")
-    ValueOperations<Object, Object> valOpsObj;
-
-    /**
-     * 根据指定key获取String
-     * @param key
-     * @return
-     */
-    public String getStr(String key){
-        return valOpsStr.get(key);
+    public void addStr(String key, String value) {
+        stringRedisTemplate.opsForValue().set(key, value);
     }
 
-    /**
-     * 设置Str缓存
-     * @param key
-     * @param val
-     */
-    public void setStr(String key, String val){
-        valOpsStr.set(key,val);
+    public void add(String key, String value, Long time) {
+        stringRedisTemplate.opsForValue().set(key, value, time, TimeUnit.MINUTES);
     }
 
-    /**
-     * 删除指定key
-     * @param key
-     */
-    public void del(String key){
-        stringRedisTemplate.delete(key);
+    public String get(String key) {
+        String value = stringRedisTemplate.opsForValue().get(key);
+        if (!StringUtils.isEmpty(value)) {
+            return value;
+        }
+        return null;
     }
 
-    /**
-     * 根据指定o获取Object
-     * @param o
-     * @return
-     */
-    public Object getObj(Object o){
-        return valOpsObj.get(o);
+    public void delete(String key) {
+        stringRedisTemplate.opsForValue().getOperations().delete(key);
     }
-
-    /**
-     * 设置obj缓存
-     * @param o1
-     * @param o2
-     */
-    public void setObj(Object o1, Object o2){
-        valOpsObj.set(o1, o2);
-    }
-
-    /**
-     * 删除Obj缓存
-     * @param o
-     */
-    public void delObj(Object o){
-        redisTemplate.delete(o);
-    }
-
 }
