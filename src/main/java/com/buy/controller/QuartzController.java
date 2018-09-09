@@ -1,6 +1,6 @@
 package com.buy.controller;
 
-import org.quartz.*;
+/*import org.quartz.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,4 +39,4 @@ public class QuartzController {
 
         return "-这是quartz测试！";
     }
-}
+}*/

@@ -1,6 +1,6 @@
 package com.buy.controller;
 
-import com.buy.quartz.SchedulerJob1;
+/*import com.buy.quartz.SchedulerJob1;
 import com.buy.quartz.SchedulerJob2;
 import org.quartz.*;
 import org.quartz.impl.matchers.GroupMatcher;
@@ -65,4 +65,4 @@ public class QuartzController2 {
 
         return jobKeys;
     }
-}
+}*/

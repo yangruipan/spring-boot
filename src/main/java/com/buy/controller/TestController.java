@@ -1,8 +1,9 @@
 package com.buy.controller;
 
-import com.buy.utils.RedisUtil;
+import com.buy.config.RedisService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class TestController {
 
     private static final Logger logger = LoggerFactory.getLogger(TestController.class);
+    @Autowired
+    private RedisService redisService;
 
     @RequestMapping(value = "/test")
     public void test(){
@@ -30,9 +33,8 @@ public class TestController {
     public String testRedis(){
         try{
             logger.info("日志开始###################################################################");
-            RedisUtil redisUtil = new RedisUtil();
-            redisUtil.set("name","张三");
-            redisUtil.set("age","25");
+            redisService.setStr("name","张三");
+            redisService.setStr("age","25");
             logger.info("日志结束####################################################################");
         }catch (Exception e){
             e.printStackTrace();
@@ -49,9 +51,8 @@ public class TestController {
         String age = null;
         try{
             logger.info("日志开始###################################################################");
-            RedisUtil redisUtil = new RedisUtil();
-            name = String.valueOf(redisUtil.get("name"));
-            age = String.valueOf(redisUtil.get("age"));
+            name = String.valueOf(redisService.getStr("name"));
+            age = String.valueOf(redisService.getStr("age"));
         }catch (Exception e){
             e.printStackTrace();
             logger.info("日志异常####################################################################");

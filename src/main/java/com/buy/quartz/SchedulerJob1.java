@@ -1,3 +1,4 @@
+/*
 package com.buy.quartz;
 
 import org.quartz.Job;
@@ -12,3 +13,4 @@ public class SchedulerJob1 implements Job {
         System.err.println("这是第一个任务"+new Date());
     }
 }
+*/

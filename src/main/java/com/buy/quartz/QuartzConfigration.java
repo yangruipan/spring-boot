@@ -1,3 +1,4 @@
+/*
 package com.buy.quartz;
 
 import org.quartz.Trigger;
@@ -13,19 +14,23 @@ public class QuartzConfigration {
     public MethodInvokingJobDetailFactoryBean detailFactoryBean(SchedulerTask task) {
         // ScheduleTask为需要执行的任务
         MethodInvokingJobDetailFactoryBean jobDetail = new MethodInvokingJobDetailFactoryBean();
-        /*
+        */
+/*
          *  是否并发执行
          *  例如每5s执行一次任务，但是当前任务还没有执行完，就已经过了5s了，
          *  如果此处为true，则下一个任务会bing执行，如果此处为false，则下一个任务会等待上一个任务执行完后，再开始执行
-         */
+         *//*
+
         jobDetail.setConcurrent(true);
 
         jobDetail.setName("scheduler");// 设置任务的名字
         jobDetail.setGroup("scheduler_group");// 设置任务的分组，这些属性都可以存储在数据库中，在多任务的时候使用
 
-        /*
+        */
+/*
          * 这两行代码表示执行task对象中的scheduleTest方法。定时执行的逻辑都在scheduleTest。
-         */
+         *//*
+
         jobDetail.setTargetObject(task);
 
         jobDetail.setTargetMethod("start");
@@ -61,3 +66,4 @@ public class QuartzConfigration {
         return schedulerFactoryBean;
     }
 }
+*/

@@ -76,13 +76,6 @@
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>2.9.0</version>
-        </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf-spring3 -->
         <dependency>
             <groupId>org.thymeleaf</groupId>
@@ -95,6 +88,13 @@
             <artifactId>tomcat-embed-jasper</artifactId>
             <!--<scope>runtime</scope>-->
         </dependency>
+
+        <!-- 打成war的时候打开注释，本地开发用内嵌tomcat时加上注释 -->
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>-->
 
     </dependencies>
     <build>

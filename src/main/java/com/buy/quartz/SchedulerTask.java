@@ -1,3 +1,4 @@
+/*
 package com.buy.quartz;
 
 import org.springframework.context.annotation.Configuration;
@@ -15,3 +16,4 @@ public class SchedulerTask {
         System.out.println("活动开始！！！"+new Date());
     }
 }
+*/
