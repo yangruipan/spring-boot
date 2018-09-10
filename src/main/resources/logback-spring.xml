@@ -15,6 +15,7 @@
             <FileNamePattern>
                 <!--日志文件生成到项目中-->
                 <!--poslog/%d{yyyy-MM-dd}/%d{yyyy-MM-dd}.log-->
+
                 <!--日志文件生成到本地${LOG_PATH}配置的地址中}-->
                 ${LOG_PATH}/%d{yyyy-MM-dd}.log
             </FileNamePattern>
