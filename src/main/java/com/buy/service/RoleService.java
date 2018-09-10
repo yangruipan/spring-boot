@@ -1,13 +1,10 @@
-package com.buy.dao;
+package com.buy.service;
 
 import com.buy.entity.Role;
-import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
-@Mapper
-@Repository
-public interface RoleMapper {
+public interface RoleService {
     int deleteByPrimaryKey(Integer id);
 
     int insert(Role record);
