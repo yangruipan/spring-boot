@@ -7,6 +7,7 @@
     <artifactId>spring-boot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
+
     <name>spring-boot</name>
     <description>Demo project for Spring Boot</description>
     <parent>
@@ -48,6 +49,13 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.49</version>
+        </dependency>
+
         <dependency>
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-core</artifactId>
@@ -97,6 +105,7 @@
         </dependency>-->
 
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
