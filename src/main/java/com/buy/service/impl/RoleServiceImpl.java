@@ -1,7 +1,7 @@
 package com.buy.service.impl;
 
-import com.buy.dao.RoleMapper;
-import com.buy.entity.Role;
+import com.buy.dao.pan.RoleMapper;
+import com.buy.entity.pan.Role;
 import com.buy.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

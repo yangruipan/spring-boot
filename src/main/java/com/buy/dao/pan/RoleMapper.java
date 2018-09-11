@@ -1,6 +1,6 @@
-package com.buy.dao;
+package com.buy.dao.pan;
 
-import com.buy.entity.Role;
+import com.buy.entity.pan.Role;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 import java.util.List;

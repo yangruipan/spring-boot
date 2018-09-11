@@ -1,16 +1,12 @@
-package com.buy.entity;
+package com.buy.entity.pan;
 
 import java.io.Serializable;
 import java.util.Date;
 
-public class User implements Serializable {
+public class Role implements Serializable {
     private Integer id;
 
     private String name;
-
-    private Integer age;
-
-    private Integer sex;
 
     private Date createTime;
 
@@ -32,22 +28,6 @@ public class User implements Serializable {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public Integer getSex() {
-        return sex;
-    }
-
-    public void setSex(Integer sex) {
-        this.sex = sex;
-    }
-
     public Date getCreateTime() {
         return createTime;
     }
@@ -64,8 +44,6 @@ public class User implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", name=").append(name);
-        sb.append(", age=").append(age);
-        sb.append(", sex=").append(sex);
         sb.append(", createTime=").append(createTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

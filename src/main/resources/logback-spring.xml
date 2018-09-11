@@ -32,7 +32,4 @@
         <appender-ref ref="logFile"/>
     </root>
 
-    <!-- <logger name="com.pos" level="INFO" additivity="false">
-        <appender-ref ref="console"/>
-    </logger> -->
 </configuration>

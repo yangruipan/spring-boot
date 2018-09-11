@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.buy.dao.UserMapper">
-  <resultMap id="BaseResultMap" type="com.buy.entity.User">
+<mapper namespace="com.buy.dao.pan.UserMapper">
+  <resultMap id="BaseResultMap" type="com.buy.entity.pan.User">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="age" jdbcType="INTEGER" property="age" />
@@ -12,7 +12,7 @@
     delete from user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.buy.entity.User">
+  <insert id="insert" parameterType="com.buy.entity.pan.User">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -21,7 +21,7 @@
     values (#{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{sex,jdbcType=INTEGER}, 
       #{createTime,jdbcType=TIMESTAMP})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.buy.entity.User">
+  <update id="updateByPrimaryKey" parameterType="com.buy.entity.pan.User">
     update user
     set `name` = #{name,jdbcType=VARCHAR},
       age = #{age,jdbcType=INTEGER},

@@ -1,13 +1,14 @@
-package com.buy.dao;
+package com.buy.dao.test;
 
-import com.buy.entity.User;
+import com.buy.entity.test.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
 @Mapper
 @Repository
-public interface UserMapper {
+public interface TestUserMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(User record);

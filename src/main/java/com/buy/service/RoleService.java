@@ -1,6 +1,6 @@
 package com.buy.service;
 
-import com.buy.entity.Role;
+import com.buy.entity.pan.Role;
 
 import java.util.List;
 
