@@ -36,7 +36,6 @@ public class DataSourcePanConfig {
     public SqlSessionFactory panSqlSessionFactory(@Qualifier("panDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-        //bean.getObject().getConfiguration().setMapUnderscoreToCamelCase(true);
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         try {
             bean.setMapperLocations(resolver.getResources("classpath*:mapping/pan/*.xml"));
