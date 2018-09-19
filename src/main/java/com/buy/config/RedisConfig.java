@@ -10,6 +10,10 @@ import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
+/**
+ * redisConfig
+ * @author yrp
+ */
 @Configuration
 @PropertySource("classpath:config/redis.properties")
 public class RedisConfig{

@@ -7,6 +7,10 @@ import org.thymeleaf.util.StringUtils;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * redisService
+ * @author yrp
+ */
 @Repository
 public class RedisService {
 

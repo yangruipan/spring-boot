@@ -9,6 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ * user Controller
+ * @author yrp
+ */
 @Controller
 @RequestMapping(value = "/user")
 public class UserController {

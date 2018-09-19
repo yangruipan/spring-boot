@@ -2,6 +2,10 @@ package com.buy.entity.test;
 
 import java.io.Serializable;
 
+/**
+ * test user Model
+ * @author yrp
+ */
 public class User implements Serializable {
     private Integer id;
 

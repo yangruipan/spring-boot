@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * role Service
+ * @author yrp
+ */
 @Service
 public class RoleServiceImpl implements RoleService {
 

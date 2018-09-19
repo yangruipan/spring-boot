@@ -3,6 +3,10 @@ package com.buy.entity.pan;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * pan user Model
+ * @author yrp
+ */
 public class User implements Serializable {
     private Integer id;
 
