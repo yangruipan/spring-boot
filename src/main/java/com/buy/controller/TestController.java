@@ -1,67 +1,81 @@
 package com.buy.controller;
 
 import com.buy.config.RedisService;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.DecodeHintType;
+import com.google.zxing.LuminanceSource;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.Result;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
+import com.google.zxing.common.HybridBinarizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+
 
 /**
- * test Controller
- * @author yrp
+ * @ClassName TestController
+ * @Author yrp
+ * @Date 2018/11/1 11:45
  */
-@Controller
-@RequestMapping(value = "/test")
+@RestController
 public class TestController {
 
-    private static final Logger logger = LoggerFactory.getLogger(TestController.class);
     @Autowired
     private RedisService redisService;
 
-    @RequestMapping(value = "/test")
-    public void test(){
+    private Logger LOGGER = LoggerFactory.getLogger(TestController.class);
+
+    public static void main(String[] args){
+        String imgPath = "F:/二维码和条形码/two.png";
         try {
-            logger.info("日志开始###############################################################");
-            int num = 1/0;
-            System.out.println(num);
+            new TestController().decode(imgPath);
         }catch (Exception e){
-            logger.info("日志结束###############################################################");
-            logger.error("系统运行异常：" + e);
+            e.printStackTrace();
         }
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/testRedis")
-    public String testRedis(){
-        try{
-            logger.info("日志开始###################################################################");
-            redisService.addStr("name","张三");
-            redisService.addStr("age","25");
-            logger.info("日志结束####################################################################");
-        }catch (Exception e){
-            e.printStackTrace();
-            logger.info("日志异常####################################################################");
-            return e.getMessage();
-        }
-        return "测试redis";
-    }
+    /**
+     * 根据二维码或者条形码图片进行解析，获取里面的信息
+     * @param imgPath 图片的绝对路径
+     * @return
+     * @throws Exception
+     */
+    @GetMapping(value = "/decode.do")
+    public String decode(String imgPath) throws Exception {
+        BufferedImage image = null;
+        Result result = null;
+        try {
+            image = ImageIO.read(new File(imgPath));
+            if (image == null) {
+                LOGGER.error("the decode image may be not exit.");
+                System.out.println("the decode image may be not exit.");
+            }
+            LuminanceSource source = new BufferedImageLuminanceSource(image);
+            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
 
-    @ResponseBody
-    @RequestMapping(value = "/getRedis")
-    public String getRedis(){
-        String name = null;
-        String age = null;
-        try{
-            logger.info("日志开始###################################################################");
-            name = String.valueOf(redisService.get("name"));
-            age = String.valueOf(redisService.get("age"));
-        }catch (Exception e){
+            Map<DecodeHintType, String> hints = new HashMap<>();
+            hints.put(DecodeHintType.CHARACTER_SET, "UTF-8");
+
+            result = new MultiFormatReader().decode(bitmap, hints);
+            LOGGER.info("***************************************************************************");
+            LOGGER.info("*************************执行redis存储**************************************");
+            redisService.addStr("123",result.getText());
+            LOGGER.info("条形码解析结果："+result.getText());
+            LOGGER.info("获取redis数据"+redisService.get("123"));
+            LOGGER.info("***************************************************************************");
+            return result.getText();
+        } catch (Exception e) {
             e.printStackTrace();
-            logger.info("日志异常####################################################################");
-            logger.info(e.getMessage());
         }
-        return "name:"+name+";age:"+age;
+        return null;
     }
 }
