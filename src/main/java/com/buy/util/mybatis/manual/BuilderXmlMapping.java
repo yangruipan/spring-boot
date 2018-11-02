@@ -1,5 +1,8 @@
 package com.buy.util.mybatis.manual;
 
+import com.buy.util.mybatis.manual.BuilderJavaClassFile;
+import com.buy.util.mybatis.manual.BuilderTableMapping;
+import com.buy.util.mybatis.manual.FileType;
 import com.buy.util.mybatis.GeneratorBuilder;
 import com.buy.util.mybatis.plugin.IgnoreDTDEntityResolver;
 import org.w3c.dom.Document;
