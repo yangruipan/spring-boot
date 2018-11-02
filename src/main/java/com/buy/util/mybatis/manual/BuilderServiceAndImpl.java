@@ -1,5 +1,8 @@
 package com.buy.util.mybatis.manual;
 
+import com.buy.util.mybatis.manual.BuilderJavaClassFile;
+import com.buy.util.mybatis.manual.BuilderTableMapping;
+import com.buy.util.mybatis.manual.FileType;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -59,13 +62,13 @@ public class BuilderServiceAndImpl {
         for (String f : fs) {
             f = f.trim();
             if (f.length() > 0) {
-                bf.delete(com.buy.util.mybatis.manual.FileType.BEAN, f);
-                bf.delete(com.buy.util.mybatis.manual.FileType.BEANSEARCH, f);
-                bf.delete(com.buy.util.mybatis.manual.FileType.MAPPER, f);
-                bf.delete(com.buy.util.mybatis.manual.FileType.XML, f);
-                bf.delete(com.buy.util.mybatis.manual.FileType.SERVICE, f);
-                bf.delete(com.buy.util.mybatis.manual.FileType.IMPL, f);
-                bf.delete(com.buy.util.mybatis.manual.FileType.JUNITTEST, f);
+                bf.delete(FileType.BEAN, f);
+                bf.delete(FileType.BEANSEARCH, f);
+                bf.delete(FileType.MAPPER, f);
+                bf.delete(FileType.XML, f);
+                bf.delete(FileType.SERVICE, f);
+                bf.delete(FileType.IMPL, f);
+                bf.delete(FileType.JUNITTEST, f);
             }
         }
     }
@@ -83,9 +86,9 @@ public class BuilderServiceAndImpl {
                 String name = as.getNamedItem("tableName").getNodeValue();
                 bf._fileds = this.queryFileds(name);
                 try {
-                    bf.save(com.buy.util.mybatis.manual.FileType.JUNITTEST, name);
-                    bf.save(com.buy.util.mybatis.manual.FileType.IMPL, name);
-                    bf.save(com.buy.util.mybatis.manual.FileType.SERVICE, name);
+                    bf.save(FileType.JUNITTEST, name);
+                    bf.save(FileType.IMPL, name);
+                    bf.save(FileType.SERVICE, name);
                 } catch (IOException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -96,14 +99,14 @@ public class BuilderServiceAndImpl {
 
     public HashMap<String, String> queryFileds(String tableName) {
         HashMap<String, String> hm = new HashMap<String, String>();
-        com.buy.util.mybatis.manual.BuilderTableMapping.getConnectionByJDBC();
+        BuilderTableMapping.getConnectionByJDBC();
         String sql = "select column_name,data_type from information_schema.columns  where table_schema='"
-                + com.buy.util.mybatis.manual.BuilderTableMapping._schema
+                + BuilderTableMapping._schema
                 + "' and table_name='"
                 + tableName + "'";
 
         try {
-            Statement stmt = com.buy.util.mybatis.manual.BuilderTableMapping.conn.createStatement();
+            Statement stmt = BuilderTableMapping.conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 String n = rs.getString(1);
@@ -117,8 +120,8 @@ public class BuilderServiceAndImpl {
             e.printStackTrace();
         } finally {
             try {
-                if (com.buy.util.mybatis.manual.BuilderTableMapping.conn != null)
-                    com.buy.util.mybatis.manual.BuilderTableMapping.conn.close();
+                if (BuilderTableMapping.conn != null)
+                    BuilderTableMapping.conn.close();
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
                 e.printStackTrace();
