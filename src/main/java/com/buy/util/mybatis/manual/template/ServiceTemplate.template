@@ -1,0 +1,20 @@
+package {package_server};
+import java.util.List;
+import {package_bean}.{bean_class_name};
+
+public interface {bean_class_name}Manager {
+
+    int countByBean({bean_class_name} bean);
+
+    int delete(Long id);
+
+    int deleteByBean({bean_class_name} bean);
+
+    int insert({bean_class_name} bean);
+
+    int update({bean_class_name} bean);
+
+    {bean_class_name} selectByPrimaryKey(Long id);
+
+    List<{bean_class_name}> selectByBean({bean_class_name} bean);
+}

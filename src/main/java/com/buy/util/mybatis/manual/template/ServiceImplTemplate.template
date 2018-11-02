@@ -1,0 +1,84 @@
+package {package_impl};
+
+import java.util.List;
+import java.util.Date;
+import org.springframework.stereotype.Service;
+import javax.annotation.Resource;
+import {package_bean}.{bean_class_name};
+import {package_bean}.{bean_class_name}Search;
+import {package_bean}.{bean_class_name}Search.Criteria;
+import {package_mapper}.{bean_class_name}Mapper;
+import {package_server}.{bean_class_name}Manager;
+
+@Service
+public class {bean_class_name}ManagerImpl implements {bean_class_name}Manager  {
+
+	@Resource
+	private {bean_class_name}Mapper _mapper;
+	//cacheKey
+	private final static String cacheKey="bean.{bean_class_name}";
+
+	private {bean_class_name}Search createSearch({bean_class_name} bean){
+		{bean_class_name}Search search = new {bean_class_name}Search();
+		Criteria cra = search.createCriteria();
+		{criteria_code}
+		if(bean.getOrderByClause()!=null){
+			search.setOrderByClause(bean.getOrderByClause());
+		}
+		return search;
+	}
+	
+	@Override
+	public int countByBean({bean_class_name} bean) {
+		{bean_class_name}Search search = this.createSearch(bean);
+		return _mapper.countByExample(search);
+	}
+
+	@Override
+	public int delete(Long id) {
+		if(id == null || id < 0) return 0;
+		int val = _mapper.deleteByPrimaryKey(id);
+		return val;
+	}
+	
+	@Override
+	public int deleteByBean({bean_class_name} bean) {
+		{bean_class_name}Search search = this.createSearch(bean);
+		int val = _mapper.deleteByExample(search);
+		return val;
+	}
+
+	@Override
+	public int insert({bean_class_name} bean) {
+		if(bean == null) return 0;
+        {bean_timestamp_add_time}		
+		{bean_timestamp_update_time}
+		int val =  _mapper.insertSelective(bean);
+		return val;
+	}
+
+	@Override
+	public int update({bean_class_name} bean) {
+		if(bean == null) return 0;
+		{bean_timestamp_update_time}
+		int val = _mapper.updateByPrimaryKeySelective(bean);
+		return val;
+	}
+
+	@Override
+	public {bean_class_name} selectByPrimaryKey(Long id) {
+		if(id == null || id < 0) return null;
+		{bean_class_name}  bean=_mapper.selectByPrimaryKey(id);
+		return bean;
+	}
+	
+	@Override
+	public List<{bean_class_name}> selectByBean({bean_class_name} bean) {
+		{bean_class_name}Search search = this.createSearch(bean);
+		search.setLimitStart(bean.getLimitStart());
+		search.setLimitEnd(bean.getLimitEnd());
+		List<{bean_class_name}> list= _mapper.selectByExample(search);
+		return list;
+	}
+	
+}
