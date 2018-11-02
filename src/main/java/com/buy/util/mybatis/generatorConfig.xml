@@ -83,7 +83,7 @@
         </javaClientGenerator>
 
         <!--生成数据表-->
-        <table tableName="f_division" domainObjectName="Division" enableUpdateByExample="true"
+        <table tableName="p_user" domainObjectName="User" enableUpdateByExample="true"
                enableDeleteByExample="true" selectByExampleQueryId="false"/>
 
     </context>
