@@ -6,7 +6,7 @@
     <groupId>com.buy</groupId>
     <artifactId>spring-boot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>spring-boot</name>
     <description>Demo project for Spring-Boot</description>
@@ -109,30 +109,19 @@
             <artifactId>tomcat-embed-jasper</artifactId>
         </dependency>
 
-        <!-- 生成二维码 用  start-->
-        <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>core</artifactId>
-            <version>3.3.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.zxing</groupId>
-            <artifactId>javase</artifactId>
-            <version>3.3.0</version>
-        </dependency>
-        <!-- 生成二维码  用end -->
-        <dependency>
-            <groupId>org.jbarcode</groupId>
-            <artifactId>JBarcode</artifactId>
-            <version>0.2.8</version>
-        </dependency>
-
         <!-- 打成war的时候打开注释，本地开发用内嵌tomcat时加上注释 -->
         <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
         </dependency>-->
+
+        <!-- Spring boot 热部署，代码改动后不需要重启项目-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional> <!-- 这个需要为 true 热部署才有效 -->
+        </dependency>
 
     </dependencies>
 
